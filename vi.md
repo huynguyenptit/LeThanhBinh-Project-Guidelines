@@ -87,3 +87,160 @@
     gì bạn lấy được ở đây rất có thể là được tạo ra (đóng gói, biên dịch, chuyển đổi) hoặc di chuyển tới đó. Cái bạn tạo 
     ra là gì, bạn cùng team của bạn cũng có thể tạo ra, vì vậy không có điểm nào để bạn commit chúng lên kho điều hướng 
     của bạn. Trừ khi bạn đặc biệt muôn.  
+## 7. Phong cách code
+ ![Code style](https://github.com/wearehive/project-guidelines/raw/master/images/code-style.png)    
+ ### 7.1 Một vài hướng dẫn về phong cách code
+ * Sử dụng stage-2 và cú pháp JavaScript cao hơn (hiện đại) cho dự án mới. Với những dự án cũ, duy trì sự tương thích với 
+ những cú pháp đang tồn tại, trừ khi bạn có dự định cải tiến dự án.  
+    _Tại sao_:  
+    > Đó là tất cả vào bạn. Chúng tôi sử dụng những bộ chuyển đổi để sử dụng những tiện ích của bộ cú pháp mới. Stage-2 
+    rất có thể sẽ trở thành một phần của spec chỉ với những thay đổi nhỏ.  
+ * Tích hợp phong cách code của bạn vào tiến trình xây dựng  
+    _Tại sao_:  
+    > Phá vỡ thiết kế của bạn là một cách để thực hành phong cách code trong dự án của bạn. Thay đổi kiến trúc của bạn 
+    là 1 trong những cách để áp dụng phong cách lập trình. Nó sẽ làm bản không cảm thấy nó bớt quan trọng đi. Áp dụng nó cho cả code bên phía client cũng như phía server. [đọc thêm](https://www.robinwieruch.de/react-eslint-webpack-babel/)  
+    * Sử dụng [ESLint - Pluggable JavaScript linter](http://eslint.org/) để áp dụng phong cách lập trình.
+    
+      
+    
+        _Tại sao:_ 
+    
+        > Đơn giản là do chúng tôi thíchích `eslint` hơn, còn bạn thì không cần phải như vậy. Nó hỗ trợ nhiều luật hơn, có khả năng cấu hình lại các luật và khả năng thêm các luật tùy chỉnh nữa.
+    
+      
+    
+    * Chúng tôi sử dụng [hướng dẫn phong cách JavaScript Airbnb](https://github.com/airbnb/javascript) cho JavaScipt, [Đọc thêm](https://www.gitbook.com/book/duk/airbnb-javascript-guidelines/details).  Sử dụng hướng dẫn phong cách javascript phù hợp yêu cầu của dự án hoặc nhóm của bạn. 
+    
+      
+    
+    * Chúng tôi sử dụng [Phong cách kiểm tra luật dạng Flow cho ESLint](https://github.com/gajus/eslint-plugin-flowtype) khi sử dụng [FlowType](https://flow.org/). 
+    
+      
+    
+        _Tại sao:_ 
+    
+        > Flow cung cấp một vài cú pháp mà cần tuân theo phong cách lập trình cụ thể và cần được kiểm tra
+    
+      
+    
+    * Sử dụng `.eslintignore` để loại trù các file hay thư mục khỏi việc kiểm tra phong cách lập trình. 
+    
+      
+    
+        _Tại sao:_ 
+    
+    
+        > Bạn không cần phải làm bẩn code của bạn với những dòng comment `eslint-disable` khi bạn cần loại các file ra khỏi việc kiểm tra phong cách.
+    
+      
+    
+    * Loại bỏ bất cứ comment tắt `eslint` của bạn trước khi tạo các Pull Request.
+    
+      
+    
+        _Tại sao:_ 
+    
+        > It's normal to disable style check while working on a code block to focus more on the logic. Just remember to remove those `eslint-disable` comments and follow the rules. 
+        > Sẽ rất bình thường khi bạn tắt các kiểm tra phong cách trong khi làm việc trên 1 đoạn code để tập trung hơn vào logic. Hãy nhớ loại các comment `eslint-disable` và tuân theo các luật.
+    
+      
+    
+    * Phụ thuộc vào kích thước của công việc mà sử dụng các comment `//TODO:` hoặc mở thẻ.
+    
+      
+    
+        _Tại sao:_ 
+    
+        > Vì sau đó bạn có thể nhắc nhở bản thân hoặc người khác về các công việc nhỏ ( như là sắp xếp lại các hàm hoặc cập nhật các comment). Với các công việc lớn hơn sử dụng `//TODO(#3456)` được thực hiện bởi các luật và con số là 1 thẻ mở.
+    
+      
+    
+    * Luôn luôn comment liên quan những thay đổi của code. Loại bỏ các đoạn code được comment.
+    
+         
+    
+        _Tại sao:_ 
+    
+        > Code của bạn nênên càng dễ đọc càng tốt, bạn nên thoát ra khỏi những thứ gây xao nhãng. Nếu bạn sắp xếp lại các hàm, đừng chỉ comment những cái cũ, hãy xóa chúng đi. 
+    
+      
+    
+    * Tránh những comment, log hay cách đặt tên vui vẻ hay không liên quan.
+    
+      
+    
+        _Tại sao:_ 
+    
+        > Khi mà cái quy trình kiến trúc của bạn có thể(nên) tránh xa khỏi chúng, đôi khi mã nguồn của bạn có thể được bàn giao cho công ty/ khách hàng khác mà họ có thể không cười nhạo chúng.
+    
+      
+    
+    * Đặt tên  dễ tìm kiếm với nhưng ý nghĩa phân biệt tránh tên ngắn. Với các hàm sử dụng các tên dài, mang nghĩa mô tả. Tên của các hàm nên là 1 động từ hoặc cụm động từ, và nó cần liên quan đến chủ đích của hàm đó.
+    
+      
+    
+          _Tại sao:_ 
+    
+        > Nó làm cho việc đọc mã nguồn tự nhiên hơn.
+    
+      
+    
+    * Tổ chức các hàm của bạn trong 1 file dựa theo luật step-down. Những hàm ở mức cao hơn nên ở trên cùng và mức thấp thì ở bên dưới.
+    
+      
+    
+        _Tại sao:_ 
+    
+        > Nó làm cho việc đọc mã nguồn tự nhiên hơn.
+    
+      
+    
+    <a name="enforcing-code-style-standards"></a> 
+    
+    ### 7.2 Áp dụng các chuẩn phong cách lập trình 
+    
+      
+    * Sử dụng 1 file [.editorconfig](http://editorconfig.org/) để giúp các lập trình viên định nghĩa và bảo trì phong cách lập trình thích hợp giữa các trình soạn thảo và các IDE khác nhau trên dự án
+    
+      
+    
+        _Tại sao:_ 
+        > Dự án EditorConfig bao gồm các định dạng file để định nghĩa các phong cách lập trình và 1 tập các plugin của các trình soạn thảo văn bản cho phép các trình soạn thảo đọc các định dạng file và tuân theo để định nghĩa các phong cách, Các file EditorConfig cũng rất dễ đọc và nó cũng tương tác hiệu quả với các hệ thống quản lý phiên bản.
+    
+      
+    
+    * Để các trình soạn thảo thông báo cho bạn về các lỗi phong  cách lập trình. Sử dụng [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) và [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) với các cấu hình ESLint hiện tại của bạn. [đọc thêm...](https://github.com/prettier/eslint-config-prettier#installation) 
+    
+      
+    
+    * Xem xét sử dụng Git hooks.
+    
+      
+    
+        _Tại sao:_ 
+    
+    
+        > Git hooks sẽ tăng mạnh năng suất của các lập trình viên. Chúng ta có thể tạo các thay đổi, commit và push lên môi trường staging hoặc production mà không sợ phá vỡ kiến trúc. [đọc thêm...](http://githooks.com/) 
+    
+      
+    
+    * Sử dụng Prettier với precommit hook
+    
+      
+    
+        _Tại sao:_ 
+    
+        > Vì bản thân `prettier` nó rất mạnh, nên việc đơn giản chạy nó như nhưng công việc npm độc lập mỗi lần để chỉnh sửa code sẽ không năng suất lắm. Đây cũng là lúc mà `lint-staged` ( và `husky`) trở nên quan trọng. Đọc thêm về cấu hình `lint-staged` [ở đây](https://github.com/okonet/lint-staged#configuration)
+     và cấu hình `husky` [ở đây](https://github.com/typicode/husky).
+      
+## 8. Ghi log  
+![logging](https://github.com/thanhbinhhd/project-guidelines/raw/master/images/logging.png)  
+ * Tránh hiển thị màn hình log phía bên người dùng trong sản xuất  
+    _Tại sao_:  
+    > Mặc dù tiến trình xây dựng của bạn có thể thoát khỏi chúng, hãy chắc chắn rằng bộ kiểm thử phong cách code của bạn 
+    cảnh báo bạn về những bảng console log còn ở lại.  
+ * Sản phẩm cũng có thể đọc được production logging. Sử dụng thư viện logging để dùng trong chế độ sản xuất (chẳng hạn như 
+ [winston](https://github.com/winstonjs/winston) hoặc [node-bunyan](https://github.com/trentm/node-bunyan))  
+    _Tại sao_:  
+    > Nó làm cho quá trinh gỡ rối của bạn đỡ khó chịu hơn với  colorization, timestamps, log đến mội file trong cửa sổ mở 
+    rộng hoặc bất kì file logging nào xoay hàng ngày. [đọc thêm](https://blog.risingstack.com/node-js-logging-tutorial/)  
