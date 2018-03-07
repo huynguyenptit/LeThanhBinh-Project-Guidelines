@@ -3,23 +3,25 @@
 ![Testing](https://github.com/wearehive/project-guidelines/raw/master/images/testing.png)  
  * Có một môi trường `test` nếu cần thiết  
      _Tại sao_:  
-    > Đôi khi end testing end trong chế độ `production` có vè như là đủ, có một số ngoại lệ: một ví dụ là bạn có thể không 
-    muốn cho phép thông tin phân tích trên chế độ 'production' và làm bẩn bảng điều khiển của ai đó với dữ liệu kiểm thử.
-    Một ví dụ khác là API của bạn có thể có giới hạn đánh giá trong `production` và khóa những lời gọi kiểm thử của bạn sau
-    lượng yêu cầu nhất định.
- * Đặt các file tets của bạn kế cạnh các modul kiểm thử, sử dụng quy tắc đặt tên `*test.js` hoặc `*spec.js`, như là 
+     __Đôi khi end testing end__: *Đôi khi việc [End to end testing](https://viblo.asia/p/what-is-end-to-end-testing-znmMd0P6Mr69)*
+     __Kiểm thử__: *test*
+     __khóa những lời gọi kiểm thử của bạn sau lượng yêu cầu nhất định__: *chặn các việc gọi phương thức test sau khi đã có một lượng lớn request đã được đưa ra*
+    > *Đôi khi end testing end* trong chế độ `production` có vè như là đủ, có một số ngoại lệ: một ví dụ là bạn *có thể* không 
+    muốn cho phép thông tin phân tích trên chế độ 'production' và làm bẩn bảng điều khiển của ai đó với dữ liệu *kiểm thử*.
+    Một ví dụ khác là API của bạn có thể có giới hạn đánh giá trong `production` và *khóa những lời gọi kiểm thử của bạn sau
+    lượng yêu cầu nhất định*.
+ * Đặt các file test của bạn kế cạnh các module kiểm thử, sử dụng quy tắc đặt tên `*test.js` hoặc `*spec.js`, ví dụ như là 
  `moduleName.spec.js`
     _Tại sao_:
     > Bạn không hề muốn đào xuyên qua cấu trúc thư mục để tìm kiếm đơn vị kiểm thử. [đọc thêm](https://hackernoon.com/structure-your-javascript-code-for-testability-9bc93d9c72dc)  
  * Đặt các file test bổ sung vào các thư mục kiểm thử tiêng biệt để tránh sự nhầm lẫn  
     _Tại sao_:
     > Có những file kiểm thử không có liên hệ đầy đủ tới bất kì file thực thi cụ thể nào. Bạn phải đặt nó trong một thư 
-    mục mà có khả năng tìm thấy nhất bởi những nhà phát triển khác: thư mục `_test_`. cái tên này: `_test_` cũng là tiêu 
-    chuẩn hiện tại và được chọn bởi phần lớn những JavaScript testing frameworks.  
+    mục mà có khả năng tìm thấy nhất bởi các developer khác: thư mục `_test_`. Tên: `_test_` cũng là tiêu 
+    chuẩn và được chọn bởi phần lớn những JavaScript testing frameworks ở thời điểm hiện tại.  
  * Viết mã nguồn kiểm thử được, tránh các hiệu ứng đi kèm, trích xuất các hiệu ứng đi kèm, viết các hàm thuần khiết  
     _Tại sao_:
-    > Bạn muốn kiểm tra tư duy kinh doanh như là các đơn vị tách rời. Bạn phải "giảm thiểu các va chạm của những quy trình
-     ngẫu nhiên và không xác đinh trên độ tin cậy trong mã nguồn của bạn". [đọc thêm](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3)  
+    > Bạn muốn kiểm tra tư duy kinh doanh như là các đơn vị tách rời. Bạn phải "giảm thiểu các tác động ngẫu nhiên và không xác đinh trên độ tin cậy trong mã nguồn của bạn". [đọc thêm](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3)  
      
     > Hàm thuần khiết là hàm mà thường trả về đầu ra tương ứng với đầu vào. Ngược lại, hàm không thuần khiết là một hàm 
     có thể có các hiệu ứng đi kèm hoặc phụ thuộc vào các điều kiện bên ngoài để tạo ra các giá trị. Điều này khiến nó khó 
@@ -29,8 +31,8 @@
     > Đôi khi bạn có thể cần bộ kiểm tra kiểu tĩnh. Nó mang lại những mức độ tin cậy nhất định cho mã nguồn của bạn. [đọc thêm](https://medium.freecodecamp.org/why-use-static-types-in-javascript-part-1-8382da1e0adb)  
  * Tiến hành các kiểm thử cục bộ trước khi tạo bất kì pull request nào tới nhánh `develop`  
     _Tại sao_:
-    > Bạn không muốn một người nào đó là nguyên nhân khiến nhánh đã sẵn sàng sản xuất của bạn bị lỗi. Chạy kiểm thử của 
-    bạn sau `rebase` của bạn hoặc trước khi đẩy nhánh đặc tính của bạn lên khi điều hướng.  
+    > Bạn không muốn một người nào đó là nguyên nhân khiến nhánh đã production-ready của bạn bị lỗi. Chạy kiểm thử của 
+    bạn sau `rebase` của bạn hoặc trước khi đẩy feature-branch lên khi điều hướng.  
  * Tài liệu kiểm thử của bạn bao gồm các hướng dẫn trong các phần liên quan của file `README.MD` của bạn  
     _Tại sao_:  
     > Đo là ghi chú tiện dụng mà bạn để lại cho những nhà phát triển khác, các chuyên gia DevOps, QA hay bất kì ai có đủ 
@@ -40,7 +42,7 @@
  * Tổ chức các file của bạn xung quanh các tính năng / các trang / các thành phần sản phẩm, không phải các vai trò. Mặt 
  khác, đặt các file kiểm thử của bạn bên cạnh các phần thực hiện của chúng.  
  
-    **Bad**
+    **Cách tổ chức không tốt**
 
     ```
     .
@@ -52,7 +54,7 @@
     |   └── user.js
     ```
 
-    **Good**
+    **Cách tổ chức tốt**
 
     ```
     .
@@ -66,20 +68,19 @@
     |   └── user.test.js
     ```
     _Tại sao_:  
-    > Thay cho danh sách dài các file, bạn sẽ tạo các module nhỏ bao gọn một nhiệm vụ, bao gồm cả kiểm thử của nó. Nó tạo 
-    nhiều sự dễ dàng trong điều hướng và những thứ được tìm thấy trong thoáng chốc.  
+    > Thay cho danh sách dài các file, bạn sẽ tạo các module nhỏ bao gọn một nhiệm vụ, bao gồm cả kiểm thử của nó. Sẽ dễ dàng hơn trong điều hướng và những thứ khác sẽ được tìm thấy trong thoáng chốc.  
  * Đặt các file test bổ sung vào các thư mục kiểm thử tiêng biệt để tránh sự nhầm lẫn  
     _Tại sao_:  
-    > Nó là cách tiết kiệm thời gian cho những nhà phát triển khác hoặc các chuyên gia DevOps trong team của bạn  
+    > Nó là cách tiết kiệm thời gian cho những các Developer khác hoặc DevOps trong team của bạn  
  * Sử dụng thư mục `./config` và không tạo file cấu hình khác nhau cho môi trường khác nhau  
     _Tại sao_:  
-    > Khi bạn phá vỡ file cấu hình cho những mục đích khác nhau (cơ sở dữ liệu, API, v.v..); đặt chúng trong thư mục với tên rất 
-    dễ nhận biết như là `config` có ý nghĩa. Chỉ cần nhớ rằng không tạo các file cấu hình khác nhau cho các môi trường 
+    > Khi bạn phá vỡ file cấu hình cho những mục đích khác nhau (database, API, v.v..); đặt chúng trong thư mục với tên 
+    dễ nhận biết như là `config`. Chỉ cần nhớ rằng không tạo các file cấu hình khác nhau cho các môi trường 
     khác nhau. Nó không tỷ lệ với độ sạch sẽ, vì khi tạo ra nhiều triển khai hơn của ứng dụng, tên môi trường mới là cần 
     thiết. Các giá trị được sử dụng trong file cấu hình cần được cung cấp bởi các biến môi trường. [đọc thêm](https://medium.com/@fedorHK/no-config-b3f1171eecd5)  
- * Đặt các bản thảo của bạn trong thư mục `./script`. Nó bao gồm các bản thảo `bash` và `node`.  
+ * Đặt các đoạn mã script của bạn trong thư mục `./script`. Nó bao gồm các đoạn mã `bash` script và `node` script.  
     _Tại sao_:  
-    > Rất có thể bạn sẽ kết thúc với nhiều hơn một bản thảo, thiết kế sản xuất, thiết kế phát triển, bộ nạp cơ sở dữ liệu, 
+    > Rất có thể bạn sẽ kết thúc với nhiều kịch bản, thiết kế sản xuất, thiết kế phát triển, bộ nạp cơ sở dữ liệu, 
     đồng bộ hóa cơ sở dữ liệu, v.v...  
  * Đặt các đầu ra thiết kế của bạn trong thư mục `./build`. thêm `build/` vào `.gitignore'.  
     _Tại sao_:  
@@ -93,20 +94,19 @@
  * Sử dụng stage-2 và cú pháp JavaScript cao hơn (hiện đại) cho dự án mới. Với những dự án cũ, duy trì sự tương thích với 
  những cú pháp đang tồn tại, trừ khi bạn có dự định cải tiến dự án.  
     _Tại sao_:  
-    > Đó là tất cả vào bạn. Chúng tôi sử dụng những bộ chuyển đổi để sử dụng những tiện ích của bộ cú pháp mới. Stage-2 
+    > Tất cả phụ thuộc vào bạn. Chúng tôi sử dụng chúng để tận dụng những thuận tiện của cú pháp mới. Chương 2 
     rất có thể sẽ trở thành một phần của spec chỉ với những thay đổi nhỏ.  
  * Tích hợp phong cách code của bạn vào tiến trình xây dựng  
     _Tại sao_:  
-    > Phá vỡ thiết kế của bạn là một cách để thực hành phong cách code trong dự án của bạn. Thay đổi kiến trúc của bạn 
-    là 1 trong những cách để áp dụng phong cách lập trình. Nó sẽ làm bản không cảm thấy nó bớt quan trọng đi. Áp dụng nó cho cả code bên phía client cũng như phía server. [đọc thêm](https://www.robinwieruch.de/react-eslint-webpack-babel/)  
-    * Sử dụng [ESLint - Pluggable JavaScript linter](http://eslint.org/) để áp dụng phong cách lập trình.
+    > Phá vỡ thiết kế của bạn là một cách để áp dụng code style trong dự án của bạn. Thay đổi kiến trúc của bạn 
+    là 1 trong những cách để áp dụng phong cách lập trình. Nó sẽ làm code của bạn bớt nghiêm trọng. Áp dụng nó cho cả code bên phía client cũng như phía server. [đọc thêm](https://www.robinwieruch.de/react-eslint-webpack-babel/)  
+    * Sử dụng [ESLint - Pluggable JavaScript linter](http://eslint.org/) để áp dụng code style.
     
       
     
         _Tại sao:_ 
     
-        > Đơn giản là do chúng tôi thíchích `eslint` hơn, còn bạn thì không cần phải như vậy. Nó hỗ trợ nhiều luật hơn, có khả năng cấu hình lại các luật và khả năng thêm các luật tùy chỉnh nữa.
-    
+        > Đơn giản là do chúng tôi thích `eslint` hơn, còn bạn thì không cần phải như vậy. Nó có nhiều quy tắc được hỗ trợ, khả năng cấu hình các quy tắc và khả năng thêm các quy tắc tùy chỉnh
       
     
     * Chúng tôi sử dụng [hướng dẫn phong cách JavaScript Airbnb](https://github.com/airbnb/javascript) cho JavaScipt, [Đọc thêm](https://www.gitbook.com/book/duk/airbnb-javascript-guidelines/details).  Sử dụng hướng dẫn phong cách javascript phù hợp yêu cầu của dự án hoặc nhóm của bạn. 
@@ -139,8 +139,7 @@
       
     
         _Tại sao:_ 
-    
-        > It's normal to disable style check while working on a code block to focus more on the logic. Just remember to remove those `eslint-disable` comments and follow the rules. 
+     
         > Sẽ rất bình thường khi bạn tắt các kiểm tra phong cách trong khi làm việc trên 1 đoạn code để tập trung hơn vào logic. Hãy nhớ loại các comment `eslint-disable` và tuân theo các luật.
     
       
